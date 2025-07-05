@@ -1,0 +1,55 @@
+# --- Java & Maven ---
+/target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.iml
+
+# --- Maven Wrapper ---
+/.mvn/
+/mvnw
+/mvnw.cmd
+
+# --- Spring Boot config secrets (optional) ---
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/application-dev.properties
+
+# --- Node.js / Vite ---
+frontend/node_modules/
+frontend/.vite/
+frontend/dist/
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+
+# --- Logs ---
+*.log
+
+# --- System & OS ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs & Editors ---
+# IntelliJ
+.idea/
+*.iws
+*.ipr
+*.iml
+
+# VSCode
+.vscode/
+
+# --- Docker volumes / MySQL container data ---
+db/mysql-data/
+**/mysql-data/
+**/mysql.sock
+
+# --- Misc ---
+*.swp
+*.bak
+*.tmp
+*.old
+*.orig
