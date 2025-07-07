@@ -2,6 +2,7 @@ package com.noahwie.notepad.controller;
 
 import com.noahwie.notepad.dto.FolderDto;
 import com.noahwie.notepad.service.FolderService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,7 +29,7 @@ private final FolderService folderService;
     }
 
     @PostMapping
-    public FolderDto createFolder(@RequestBody FolderDto folderDto) {
+    public FolderDto createFolder(@RequestBody @Valid FolderDto folderDto) {
         return folderService.createFolder(folderDto);
     }
 
