@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class Note {
+    // Attribute
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +25,15 @@ public class Note {
     @ManyToOne
     @JoinColumn(name = "folder_id")
     private Folder folder;
+
+    // Konstruktor
+
+    public Note(Long id, String title, String content, LocalDateTime createdAt, Folder folder) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.createdAt = createdAt;
+        this.folder = folder;
+    }
+
 }
