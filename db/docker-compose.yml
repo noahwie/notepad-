@@ -9,5 +9,3 @@ services:
       MYSQL_DATABASE: notepad
     ports:
       - 3307:3306
-    volumes: 
-      - ./db/mysql-data:/var/lib/mysql
