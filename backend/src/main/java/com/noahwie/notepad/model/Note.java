@@ -8,11 +8,11 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Getter
-@Setter
 public class Note {
     // Attribute
     @Id

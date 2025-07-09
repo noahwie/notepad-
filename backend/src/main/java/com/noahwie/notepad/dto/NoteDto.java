@@ -1,14 +1,18 @@
 package com.noahwie.notepad.dto;
 
 import jakarta.validation.constraints.NotBlank;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class NoteDto {
-    public Long id;
+    private Long id;
 
     @NotBlank(message = "Note name must not be empty")
-    public String title;
-    public String content;
-    public LocalDateTime createdAt;
+    private String title;
+    private String content;
+    private LocalDateTime createdAt;
 }
