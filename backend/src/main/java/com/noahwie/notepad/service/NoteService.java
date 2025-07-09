@@ -59,8 +59,8 @@ public class NoteService {
         Note existing = noteRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found"));
 
-        existing.setTitle(noteDto.title);
-        existing.setContent(noteDto.content);
+        existing.setTitle(noteDto.getTitle());
+        existing.setContent(noteDto.getContent());
 
         Note updated = noteRepository.save(existing);
         return noteMapper.toDto(updated);

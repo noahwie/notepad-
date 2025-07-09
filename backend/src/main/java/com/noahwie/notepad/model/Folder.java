@@ -9,11 +9,11 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Getter
-@Setter
 public class Folder {
     // Attribute
     @Id
