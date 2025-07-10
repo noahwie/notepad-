@@ -228,31 +228,71 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 - Node.js / React
 - Spring Boot
 - MySQL (Docker)
-- Browser: Chrome / Firefox
+- Browser: Chrome
+- Tools: Postman, JUnit, Jest
 
 ---
 
-### Test Cases
+### 6.1 Manual API testing (Postman)
 
-| Test ID | Description                       | Expected Result                                  | Status |
-|---------|-----------------------------------|--------------------------------------------------|--------|
-| TC01    | Create Folder                     | Folder appears in sidebar with correct name      | ☐      |
-| TC02    | Create Note in Folder             | Note card appears in main area                   | ☐      |
-| TC03    | Edit Existing Note                | Edited content is saved and displayed correctly  | ☐      |
-| TC04    | Delete Note                       | Note disappears after confirmation               | ☐      |
-| TC05    | Delete Folder and Notes           | Folder and all its notes are deleted             | ☐      |
-
+| Test ID | Endpoint                    | Description                                 | Expected Status | Status |
+|---------|-----------------------------|---------------------------------------------|------------------|--------|
+| TC01    | POST /folders               | Create folder                               | 200 OK           | ✓      |
+| TC02    | GET /folders                | Get all folders                             | 200 OK           | ✓      |
+| TC03    | GET /folders/{id}           | Get folder by ID                            | 200 OK           | ✓      |
+| TC04    | POST /folders/{id}/notes    | Add note to folder                          | 200 OK           | ✓      |
+| TC05    | GET /folders/{id}/notes     | Get notes in folder                         | 200 OK           | ✓      |
+| TC06    | GET /notes/{id}             | Get single note by ID                       | 200 OK           | ✓      |
+| TC07    | PUT /notes/{id}             | Update existing note                        | 200 OK           | ✓      |
+| TC08    | GET /folders/{id}           | Verify note appears in folder               | 200 OK           | ✓      |
+| TC09    | DELETE /notes/{id}          | Delete note                                 | 204 No Content    | ✓      |
+| TC10    | DELETE /folders/{id}        | Delete folder and its notes                 | 204 No Content    | ✓      |
 ---
 
-### Summary
+### Summary (6.1 Manual API Testing)
 
+- Total Tests: 10  
+- Passed: 10   
+- Failed: 0  
+- Blocked: 0 
+
+---
+### 6.2 Backend Unit Tests (JUnit)
+
+| Test ID | Class/Method                | Description                      | Expected Result             | Status |
+|---------|-----------------------------|----------------------------------|-----------------------------|--------|
+| TC11    | FolderServiceTest           | Save valid folder                | Folder is saved             | ☐      |
+
+#### Summary (6.2 Backend Unit)
 - Total Tests: 5  
 - Passed: ☐  
 - Failed: ☐  
-- Blocked: ☐  
+- Blocked: ☐
+---
+### 6.3 Manual Frontend Testing
 
-<!-- Fill this table during manual testing phase -->
+| Test ID | Component / Feature         | Description                      | Expected Result             | Status |
+|---------|-----------------------------|----------------------------------|-----------------------------|--------|
+| TC16    | FolderList                  | Renders folders from API         | Folder cards are shown      | ☐      |
 
+#### Summary (6.3 Frontend Unit)
+- Total Tests: 
+- Passed: ☐  
+- Failed: ☐  
+- Blocked: ☐
+---
+### 6.4 Frontend Unit Tests (Jest)
+
+| Test ID | Component / Feature         | Description                      | Expected Result             | Status |
+|---------|-----------------------------|----------------------------------|-----------------------------|--------|
+| TC16    | FolderList                  | Renders folders from API         | Folder cards are shown      | ☐      |
+... (später ergänzen) ...
+
+#### Summary (6.4 Frontend Unit)
+- Total Tests: 5  
+- Passed: ☐  
+- Failed: ☐  
+- Blocked: ☐
 ---
 
 ## 7. Installation Instructions
