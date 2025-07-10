@@ -44,13 +44,13 @@ function PopupReadNote({ note, onClose, onUpdate }) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-            <button onClick={handleUpdate}>Done Editing</button>
+            <button onClick={handleUpdate} className="update-btn">Done Editing</button>
           </>
         ) : (
           <>
             <h3>{note.title}</h3>
             <p>{note.content}</p>
-            <button onClick={() => setIsEditing(true)}>Edit Note</button>
+            <button onClick={() => setIsEditing(true)} className="update-btn">Edit Note</button>
           </>
         )}
 
