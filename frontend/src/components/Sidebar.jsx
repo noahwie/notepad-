@@ -1,14 +1,13 @@
 // src/components/Sidebar.jsx
 import React, { useState, useEffect } from "react";
-import { getFolders } from "../services/api";
+import { getFolders, deleteFolder } from "../services/api";
 import FolderItem from "./FolderItem";
 import PopupFolder from "./PopupFolder";
 
-function Sidebar({ onFolderSelect }) {
+function Sidebar({ onFolderSelect, selectedFolder, onFolderDeleted }) {
   const [folders, setFolders] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
 
-  // Holt die Folder beim ersten Laden
   useEffect(() => {
     fetchFolders();
   }, []);
@@ -23,12 +22,29 @@ function Sidebar({ onFolderSelect }) {
   };
 
   const handleFolderClick = (folder) => {
-    onFolderSelect(folder); // gibt den gewählten Ordner an die Main-Komponente weiter
+    onFolderSelect(folder);
+  };
+
+  const handleDeleteFolder = async (folder) => {
+    const confirmed = window.confirm(`Möchtest du den Ordner "${folder.name}" wirklich löschen?`);
+    if (!confirmed) return;
+
+    try {
+      await deleteFolder(folder.id);
+      fetchFolders();
+
+      // Falls gerade selektierter Folder gelöscht wurde
+      if (onFolderDeleted && selectedFolder?.id === folder.id) {
+        onFolderDeleted(folder.id);
+      }
+    } catch (error) {
+      console.error("Fehler beim Löschen des Folders:", error);
+    }
   };
 
   const handleCreateSuccess = () => {
-    setShowPopup(false);     // Popup schliessen
-    fetchFolders();          // Folder-Liste neu laden
+    setShowPopup(false);
+    fetchFolders();
   };
 
   return (
@@ -42,6 +58,7 @@ function Sidebar({ onFolderSelect }) {
           key={folder.id}
           folder={folder}
           onClick={() => handleFolderClick(folder)}
+          onDelete={handleDeleteFolder}
         />
       ))}
 

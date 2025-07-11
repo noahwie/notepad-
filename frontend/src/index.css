@@ -147,6 +147,7 @@ button {
   width: 100%;
   box-sizing: border-box;
   color: black;
+  margin-bottom: 5px;
 }
 
 /* === Popup Buttons === */

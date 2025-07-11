@@ -1,4 +1,4 @@
-// src/pages/main.jsx
+// src/pages/MainPage.jsx
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import NoteCard from "../components/NoteCard";
@@ -36,8 +36,15 @@ function MainPage() {
 
   return (
     <div className="main-layout">
-      <Sidebar onFolderSelect={setSelectedFolder} />
-      
+      <Sidebar
+        onFolderSelect={setSelectedFolder}
+        selectedFolder={selectedFolder}
+        onFolderDeleted={(deletedId) => {
+          if (selectedFolder?.id === deletedId) {
+            setSelectedFolder(null);
+          }
+        }}
+      />
 
       <div className={`main-content ${showPopup || selectedNote ? "blurred" : ""}`}>
         <div className="header">
