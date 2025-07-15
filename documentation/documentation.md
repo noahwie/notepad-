@@ -147,7 +147,7 @@ It’s a bit like digital sticky notes — but smarter, more structured, and imp
 ## 4. Class Diagram
 
 ### Diagram
-![Class Diagram](./img/class-diagram.png)
+![Class Diagram](./documentation/img/class-diagram.png)
 
 ### Entities & Relationships
 
