@@ -269,18 +269,26 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 - Failed: ☐  
 - Blocked: ☐
 ---
+
 ### 6.3 Manual Frontend Testing
 
-| Test ID | Component / Feature         | Description                      | Expected Result             | Status |
-|---------|-----------------------------|----------------------------------|-----------------------------|--------|
-| TC16    | FolderList                  | Renders folders from API         | Folder cards are shown      | ☐      |
+| Test ID | Feature         | Description                                                              | Expected Result                                           | Status |
+|---------|------------------|---------------------------------------------------------------------------|------------------------------------------------------------|--------|
+| TC01    | Create Folder     | Clicking "New Folder" opens a form; after confirming, folder appears     | New folder is shown in the sidebar                         | ✓      |
+| TC02    | Select Folder     | Clicking on a folder in the sidebar                                      | Notes in that folder are shown; "New Note" button visible  | ✓      |
+| TC03    | Create Note       | Clicking "New Note" opens a form; after confirming, note is created      | New note appears in the main area                          | ✓      |
+| TC04    | Read Note         | Clicking on a note                                                       | Note content is displayed                                  | ✓      |
+| TC05    | Update Note       | Clicking "Edit Note" allows editing; after confirming, note is updated   | Updated content is saved and displayed                     | ✓      |
+| TC06    | Delete Note       | Clicking on a note → "Delete" → confirm                                  | Note is deleted and removed from the main screen           | ✓      |
+| TC07    | Delete Folder     | Clicking the X button next to a folder and confirming deletion           | Folder is removed from sidebar and all related notes are deleted | ✓   |
 
-#### Summary (6.3 Frontend Unit)
-- Total Tests: 
-- Passed: ☐  
-- Failed: ☐  
-- Blocked: ☐
----
+#### Summary
+
+- Total Tests: 7  
+- Passed: 7  
+- Failed: 0  
+- Blocked: 0
+
 ### 6.4 Frontend Unit Tests (Jest)
 
 | Test ID | Component / Feature         | Description                      | Expected Result             | Status |
