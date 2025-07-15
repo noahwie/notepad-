@@ -326,10 +326,21 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 - Docker & Docker Compose
 
 **Steps:**
-1. Clone the repo
-2. Run MySQL container
-3. Run the Spring Boot application
-
+1. Clone the repo:
+``` bash
+git clone https://github.com/dein-benutzername/notepad---.git
+cd notepad+++
+```
+2. Run MySQL container:
+``` bash
+cd db
+docker compose up -d
+``` 
+3. Run the Spring Boot application:
+``` bash
+cd backend
+./mvnw spring-boot:run
+``` 
 ### Frontend Setup
 
 **Requirements:**
@@ -345,11 +356,12 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 
 ## 8. Support Log
 
-### Peer Help
-<!-- Record help from classmates -->
-
 ### Online Resources
-<!-- List of links, StackOverflow posts, docs -->
+- [Spring Boot CRUD + MySQL Guide](https://www.baeldung.com/spring-boot-crud-thymeleaf)
+- [React + Axios API Setup](https://axios-http.com/docs/intro)
+- [Vitest Dokumentation](https://vitest.dev/guide/)
+- [Testing Library Examples](https://testing-library.com/docs/react-testing-library/example-intro)
+- Chat Gpt "For Formating help in the documentation and as last resort for coding help"
 
-### Instructor Feedback
-<!-- Notes from meetings or approvals -->
+---
+
