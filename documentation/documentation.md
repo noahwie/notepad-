@@ -7,6 +7,7 @@ This document contains the full documentation for the Notepad+++ application, cr
 ## 1. Project Idea
 
 ### Overview
+
 TWith this app you can create notes and directories for different ideas and project to keep them clean and structured.
 
 Simply create a idea/project directory for example, Holiday trip ideas. Then open that directory and create notes for everything you need to keep track off.
@@ -14,7 +15,9 @@ Simply create a idea/project directory for example, Holiday trip ideas. Then ope
 You can add as many notes as you want inside a directory and name them accordingly like Hotels, Restaurants, or Sightseeing Activities.
 
 If you need to change something in a note, just click and edit it. If a note is no longer relevant, delete it. Once a project is finished, you can remove the whole directory.
+
 ### Purpose
+
 Have you ever tried to build your own note-taking system? Maybe on paper? Or with something like OneNote?
 
 The problem with paper is it gets messy. Notes get lost, mistakes are hard to fix, and organizing multiple topics is nearly impossible.
@@ -23,7 +26,7 @@ And while OneNote seems like a digital solution, it often ends up cluttered. You
 
 Here’s the solution:
 A simple, clean, and minimalistic note-taking app that lets you organize your notes by project or idea.
-It’s a bit like digital sticky notes — but smarter, more structured, and impossible to lose.  
+It’s a bit like digital sticky notes — but smarter, more structured, and impossible to lose.
 
 ---
 
@@ -43,6 +46,7 @@ It’s a bit like digital sticky notes — but smarter, more structured, and imp
 ### UI/UX Functional Flow (Frontend-Specific Behaviour)
 
 #### Directory Sidebar
+
 - A sidebar displays all note directories.
 - A “Create Directory” button opens a pop-up with a name input field.
 - New directories appear in the sidebar, sorted by creation date.
@@ -50,6 +54,7 @@ It’s a bit like digital sticky notes — but smarter, more structured, and imp
 - Clicking a directory shows all its notes in the main section.
 
 #### Notes Display & Interaction
+
 - The main section shows notes belonging to the selected directory.
 - A “Create Note” button opens a pop-up with:
   - A title input field
@@ -58,6 +63,7 @@ It’s a bit like digital sticky notes — but smarter, more structured, and imp
 - Created notes appear as cards (squares) in the main area.
 
 #### Note Management
+
 - Clicking a note opens a pop-up showing the note’s content.
 - The pop-up includes:
   - An “Edit Note” button to enable editing
@@ -83,62 +89,67 @@ It’s a bit like digital sticky notes — but smarter, more structured, and imp
 ## 3. Use Cases
 
 ### Use Case 1: Create Folder
-- **Actor**: User  
-- **Preconditions**: User is on the main view of the application  
-- **Steps**:  
-  1. User clicks the "Create Directory" button in the sidebar  
-  2. A pop-up appears asking for the folder name  
-  3. User enters a name and confirms  
+
+- **Actor**: User
+- **Preconditions**: User is on the main view of the application
+- **Steps**:
+  1. User clicks the "Create Directory" button in the sidebar
+  2. A pop-up appears asking for the folder name
+  3. User enters a name and confirms
 - **Expected Result**:  
   A new directory appears in the sidebar, sorted by creation date
 
 ---
 
 ### Use Case 2: Add Note to Folder
-- **Actor**: User  
-- **Preconditions**: A folder is selected  
-- **Steps**:  
-  1. User clicks the "Create Note" button in the main section  
-  2. A pop-up appears with a title field and a text field  
-  3. User enters note content and clicks "Create"  
+
+- **Actor**: User
+- **Preconditions**: A folder is selected
+- **Steps**:
+  1. User clicks the "Create Note" button in the main section
+  2. A pop-up appears with a title field and a text field
+  3. User enters note content and clicks "Create"
 - **Expected Result**:  
   A new note card appears in the main section, linked to the selected folder
 
 ---
 
 ### Use Case 3: View and Edit Note
-- **Actor**: User  
-- **Preconditions**: At least one note exists in the selected folder  
-- **Steps**:  
-  1. User clicks on a note card  
-  2. A pop-up appears showing the note content  
-  3. User clicks "Edit Note"  
-  4. User changes the content and clicks "Done Editing"  
+
+- **Actor**: User
+- **Preconditions**: At least one note exists in the selected folder
+- **Steps**:
+  1. User clicks on a note card
+  2. A pop-up appears showing the note content
+  3. User clicks "Edit Note"
+  4. User changes the content and clicks "Done Editing"
 - **Expected Result**:  
   The note is updated and saved; the updated content is shown in the note pop-up
 
 ---
 
 ### Use Case 4: Delete Note
-- **Actor**: User  
-- **Preconditions**: At least one note exists  
-- **Steps**:  
-  1. User clicks on a note card  
-  2. In the pop-up, user clicks the "Delete Note" button  
-  3. A confirmation dialog appears  
-  4. User confirms deletion  
+
+- **Actor**: User
+- **Preconditions**: At least one note exists
+- **Steps**:
+  1. User clicks on a note card
+  2. In the pop-up, user clicks the "Delete Note" button
+  3. A confirmation dialog appears
+  4. User confirms deletion
 - **Expected Result**:  
   The note is permanently deleted and removed from the main section
 
 ---
 
 ### Use Case 5: Delete Folder
-- **Actor**: User  
-- **Preconditions**: At least one folder exists  
-- **Steps**:  
-  1. User clicks the trash can icon next to a folder name in the sidebar  
-  2. A confirmation dialog appears  
-  3. User confirms deletion  
+
+- **Actor**: User
+- **Preconditions**: At least one folder exists
+- **Steps**:
+  1. User clicks the trash can icon next to a folder name in the sidebar
+  2. A confirmation dialog appears
+  3. User confirms deletion
 - **Expected Result**:  
   The folder and all contained notes are deleted; the main view resets
 
@@ -147,11 +158,13 @@ It’s a bit like digital sticky notes — but smarter, more structured, and imp
 ## 4. Class Diagram
 
 ### Diagram
-![Class Diagram](./documentation/img/class-diagram.png)
+
+![Class Diagram](./img/class-diagram.png)
 
 ### Entities & Relationships
 
 - **Folder**
+
   - `id` (Long): Unique identifier
   - `name` (String): Folder title
   - `createdAt` (Timestamp): Date of creation
@@ -181,26 +194,27 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 
 #### Folder Endpoints
 
-| Method | Endpoint         | Description              | Request Body     | Response         |
-|--------|------------------|--------------------------|------------------|------------------|
-| GET    | `/folders`       | List all folders         | –                | List of folders  |
-| GET    | `/folders/{id}`  | Get a single folder      | –                | Folder + notes   |
-| POST   | `/folders`       | Create new folder        | Folder JSON      | Created folder   |
-| DELETE | `/folders/{id}`  | Delete folder & its notes | –               | 204 No Content   |
+| Method | Endpoint        | Description               | Request Body | Response        |
+| ------ | --------------- | ------------------------- | ------------ | --------------- |
+| GET    | `/folders`      | List all folders          | –            | List of folders |
+| GET    | `/folders/{id}` | Get a single folder       | –            | Folder + notes  |
+| POST   | `/folders`      | Create new folder         | Folder JSON  | Created folder  |
+| DELETE | `/folders/{id}` | Delete folder & its notes | –            | 204 No Content  |
 
 #### Note Endpoints
 
-| Method | Endpoint                    | Description               | Request Body   | Response        |
-|--------|-----------------------------|---------------------------|----------------|-----------------|
-| GET    | `/folders/{id}/notes`       | Get notes in a folder     | –              | List of notes   |
-| POST   | `/folders/{id}/notes`       | Add note to folder        | Note JSON      | Created note    |
-| GET    | `/notes/{noteId}`           | Get single note           | –              | Note JSON       |
-| PUT    | `/notes/{noteId}`           | Update existing note      | Note JSON      | Updated note    |
-| DELETE | `/notes/{noteId}`           | Delete note               | –              | 204 No Content  |
+| Method | Endpoint              | Description           | Request Body | Response       |
+| ------ | --------------------- | --------------------- | ------------ | -------------- |
+| GET    | `/folders/{id}/notes` | Get notes in a folder | –            | List of notes  |
+| POST   | `/folders/{id}/notes` | Add note to folder    | Note JSON    | Created note   |
+| GET    | `/notes/{noteId}`     | Get single note       | –            | Note JSON      |
+| PUT    | `/notes/{noteId}`     | Update existing note  | Note JSON    | Updated note   |
+| DELETE | `/notes/{noteId}`     | Delete note           | –            | 204 No Content |
 
 ### Data Models
 
 #### Folder (Request/Response)
+
 ```json
 {
   "id": 1,
@@ -210,6 +224,7 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 ```
 
 #### Note (Request/Response)
+
 ```json
 {
   "id": 12,
@@ -225,6 +240,7 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 ## 6. Test Plan
 
 ### Environment
+
 - Node.js / React
 - Spring Boot
 - MySQL (Docker)
@@ -235,83 +251,86 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 
 ### 6.1 Manual API testing (Postman)
 
-| Test ID | Endpoint                    | Description                                 | Expected Status | Status |
-|---------|-----------------------------|---------------------------------------------|------------------|--------|
-| TC01    | POST /folders               | Create folder                               | 200 OK           | ✓      |
-| TC02    | GET /folders                | Get all folders                             | 200 OK           | ✓      |
-| TC03    | GET /folders/{id}           | Get folder by ID                            | 200 OK           | ✓      |
-| TC04    | POST /folders/{id}/notes    | Add note to folder                          | 200 OK           | ✓      |
-| TC05    | GET /folders/{id}/notes     | Get notes in folder                         | 200 OK           | ✓      |
-| TC06    | GET /notes/{id}             | Get single note by ID                       | 200 OK           | ✓      |
-| TC07    | PUT /notes/{id}             | Update existing note                        | 200 OK           | ✓      |
-| TC08    | GET /folders/{id}           | Verify note appears in folder               | 200 OK           | ✓      |
-| TC09    | DELETE /notes/{id}          | Delete note                                 | 204 No Content    | ✓      |
-| TC10    | DELETE /folders/{id}        | Delete folder and its notes                 | 204 No Content    | ✓      |
+| Test ID | Endpoint                 | Description                   | Expected Status | Status |
+| ------- | ------------------------ | ----------------------------- | --------------- | ------ |
+| TC01    | POST /folders            | Create folder                 | 200 OK          | ✓      |
+| TC02    | GET /folders             | Get all folders               | 200 OK          | ✓      |
+| TC03    | GET /folders/{id}        | Get folder by ID              | 200 OK          | ✓      |
+| TC04    | POST /folders/{id}/notes | Add note to folder            | 200 OK          | ✓      |
+| TC05    | GET /folders/{id}/notes  | Get notes in folder           | 200 OK          | ✓      |
+| TC06    | GET /notes/{id}          | Get single note by ID         | 200 OK          | ✓      |
+| TC07    | PUT /notes/{id}          | Update existing note          | 200 OK          | ✓      |
+| TC08    | GET /folders/{id}        | Verify note appears in folder | 200 OK          | ✓      |
+| TC09    | DELETE /notes/{id}       | Delete note                   | 204 No Content  | ✓      |
+| TC10    | DELETE /folders/{id}     | Delete folder and its notes   | 204 No Content  | ✓      |
+
 ---
 
 ### Summary (6.1 Manual API Testing)
 
-- Total Tests: 10  
-- Passed: 10   
-- Failed: 0  
-- Blocked: 0 
+- Total Tests: 10
+- Passed: 10
+- Failed: 0
+- Blocked: 0
 
 ---
+
 ### 6.2 Backend Unit Tests (JUnit)
 
-| Test ID | Class / Method               | Description                                    | Expected Result                     | Status |
-|---------|------------------------------|------------------------------------------------|-------------------------------------|--------|
-| TC11    | FolderService.getAllFolders | Returns a list of mapped FolderDto objects     | List size matches mock repository   | ✓     |
-| TC12    | FolderService.getFolderById | Returns single FolderDto                       | DTO with matching ID is returned    | ✓     |
-| TC13    | FolderService.createFolder  | Maps DTO to entity, saves, and returns DTO     | Created folder DTO returned         | ✓     |
-| TC14    | FolderService.deleteFolderById | Deletes folder if it exists                   | Repository delete method is called  | ✓     |
-| TC15    | NoteService.getNotesInFolder | Returns list of notes for a given folder ID   | List of NoteDto returned            | ✓     |
-| TC16    | NoteService.getNoteById     | Retrieves single note by ID                    | Matching NoteDto returned           | ✓     |
-| TC17    | NoteService.createNote      | Creates a new Note under an existing folder    | Saved NoteDto is returned           | ✓     |
-| TC18    | NoteService.updateNoteById  | Updates existing note content/title            | Changes saved and returned          | ✓     |
-| TC19    | NoteService.deleteNote      | Deletes note if it exists                      | Repository delete called            | ✓     |
-| TC20    | NoteService.deleteNote (fail) | Throws if note does not exist                 | Exception is thrown                 | ✓     |
+| Test ID | Class / Method                 | Description                                 | Expected Result                    | Status |
+| ------- | ------------------------------ | ------------------------------------------- | ---------------------------------- | ------ |
+| TC11    | FolderService.getAllFolders    | Returns a list of mapped FolderDto objects  | List size matches mock repository  | ✓      |
+| TC12    | FolderService.getFolderById    | Returns single FolderDto                    | DTO with matching ID is returned   | ✓      |
+| TC13    | FolderService.createFolder     | Maps DTO to entity, saves, and returns DTO  | Created folder DTO returned        | ✓      |
+| TC14    | FolderService.deleteFolderById | Deletes folder if it exists                 | Repository delete method is called | ✓      |
+| TC15    | NoteService.getNotesInFolder   | Returns list of notes for a given folder ID | List of NoteDto returned           | ✓      |
+| TC16    | NoteService.getNoteById        | Retrieves single note by ID                 | Matching NoteDto returned          | ✓      |
+| TC17    | NoteService.createNote         | Creates a new Note under an existing folder | Saved NoteDto is returned          | ✓      |
+| TC18    | NoteService.updateNoteById     | Updates existing note content/title         | Changes saved and returned         | ✓      |
+| TC19    | NoteService.deleteNote         | Deletes note if it exists                   | Repository delete called           | ✓      |
+| TC20    | NoteService.deleteNote (fail)  | Throws if note does not exist               | Exception is thrown                | ✓      |
 
 #### Summary
 
-- Total Tests: 10  
-- Passed: 10  
-- Failed: 0  
+- Total Tests: 10
+- Passed: 10
+- Failed: 0
 - Blocked: 0
 
 ---
 
 ### 6.3 Manual Frontend Testing
 
-| Test ID | Feature         | Description                                                              | Expected Result                                           | Status |
-|---------|------------------|---------------------------------------------------------------------------|------------------------------------------------------------|--------|
-| TC21    | Create Folder     | Clicking "New Folder" opens a form; after confirming, folder appears     | New folder is shown in the sidebar                         | ✓      |
-| TC22    | Select Folder     | Clicking on a folder in the sidebar                                      | Notes in that folder are shown; "New Note" button visible  | ✓      |
-| TC23    | Create Note       | Clicking "New Note" opens a form; after confirming, note is created      | New note appears in the main area                          | ✓      |
-| TC24    | Read Note         | Clicking on a note                                                       | Note content is displayed                                  | ✓      |
-| TC25    | Update Note       | Clicking "Edit Note" allows editing; after confirming, note is updated   | Updated content is saved and displayed                     | ✓      |
-| TC26    | Delete Note       | Clicking on a note → "Delete" → confirm                                  | Note is deleted and removed from the main screen           | ✓      |
-| TC27    | Delete Folder     | Clicking the X button next to a folder and confirming deletion           | Folder is removed from sidebar and all related notes are deleted | ✓   |
+| Test ID | Feature       | Description                                                            | Expected Result                                                  | Status |
+| ------- | ------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------- | ------ |
+| TC21    | Create Folder | Clicking "New Folder" opens a form; after confirming, folder appears   | New folder is shown in the sidebar                               | ✓      |
+| TC22    | Select Folder | Clicking on a folder in the sidebar                                    | Notes in that folder are shown; "New Note" button visible        | ✓      |
+| TC23    | Create Note   | Clicking "New Note" opens a form; after confirming, note is created    | New note appears in the main area                                | ✓      |
+| TC24    | Read Note     | Clicking on a note                                                     | Note content is displayed                                        | ✓      |
+| TC25    | Update Note   | Clicking "Edit Note" allows editing; after confirming, note is updated | Updated content is saved and displayed                           | ✓      |
+| TC26    | Delete Note   | Clicking on a note → "Delete" → confirm                                | Note is deleted and removed from the main screen                 | ✓      |
+| TC27    | Delete Folder | Clicking the X button next to a folder and confirming deletion         | Folder is removed from sidebar and all related notes are deleted | ✓      |
 
 #### Summary
 
-- Total Tests: 7  
-- Passed: 7  
-- Failed: 0  
+- Total Tests: 7
+- Passed: 7
+- Failed: 0
 - Blocked: 0
 
 ### 6.4 Frontend Unit Tests (Vitest)
 
-| Test ID | Component / Feature   | Description                               | Expected Result                       | Status |
-|---------|------------------------|-------------------------------------------|----------------------------------------|--------|
-| TC28    | NoteCard               | Renders title and triggers onClick        | Note title appears, click is handled   | ✓     |
-| TC29    | FolderItem             | Renders folder and handles delete/click   | Name shown, delete and click work      | ✓     |
-| TC30    | PopupNote              | Handles form input and triggers create    | Note is submitted, onCreate is called  | ✓     |
+| Test ID | Component / Feature | Description                             | Expected Result                       | Status |
+| ------- | ------------------- | --------------------------------------- | ------------------------------------- | ------ |
+| TC28    | NoteCard            | Renders title and triggers onClick      | Note title appears, click is handled  | ✓      |
+| TC29    | FolderItem          | Renders folder and handles delete/click | Name shown, delete and click work     | ✓      |
+| TC30    | PopupNote           | Handles form input and triggers create  | Note is submitted, onCreate is called | ✓      |
 
 #### Summary (Frontend Unit)
-- Total Tests: 3  
-- Passed: 3  
-- Failed: 0  
+
+- Total Tests: 3
+- Passed: 3
+- Failed: 0
 - Blocked: 0
 
 ---
@@ -321,50 +340,67 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 ### Backend Setup
 
 **Requirements:**
+
 - Java 17+
 - Maven
 - Docker & Docker Compose
 
 **Steps:**
+
 1. Clone the repo:
-``` bash
+
+```bash
 git clone https://github.com/dein-benutzername/notepad---.git
 cd notepad+++
 ```
+
 2. Run MySQL container:
-``` bash
+
+```bash
 cd db
 docker compose up -d
-``` 
+```
+
 3. Run the Spring Boot application:
-``` bash
+
+```bash
 cd backend
 ./mvnw spring-boot:run
-``` 
+```
+
 ### Frontend Setup
 
 **Requirements:**
+
 - Node.js
 - npm
 
 **Steps:**
+
 1. Change to frontend directory:
+
 ```bash
 cd frontend/
 ```
+
 2. Install packages:
-```bash 
+
+```bash
  npm install
 ```
+
 3. Run the frontend:
+
 ```bash
 npm run dev
 ```
+
 ---
 
 ## 8. Support Log
 
 ### Online Resources
+
 - [Spring Boot CRUD + MySQL Guide](https://www.baeldung.com/spring-boot-crud-thymeleaf)
 - [React + Axios API Setup](https://axios-http.com/docs/intro)
 - [Vitest Dokumentation](https://vitest.dev/guide/)
@@ -372,4 +408,3 @@ npm run dev
 - Chat Gpt "For Formating help in the documentation and as last resort for coding help"
 
 ---
-
