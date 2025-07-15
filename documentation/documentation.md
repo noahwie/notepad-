@@ -300,18 +300,20 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 - Failed: 0  
 - Blocked: 0
 
-### 6.4 Frontend Unit Tests (Jest)
+### 6.4 Frontend Unit Tests (Vitest)
 
-| Test ID | Component / Feature         | Description                      | Expected Result             | Status |
-|---------|-----------------------------|----------------------------------|-----------------------------|--------|
-| TC16    | FolderList                  | Renders folders from API         | Folder cards are shown      | ☐      |
-... (später ergänzen) ...
+| Test ID | Component / Feature   | Description                               | Expected Result                       | Status |
+|---------|------------------------|-------------------------------------------|----------------------------------------|--------|
+| TC28    | NoteCard               | Renders title and triggers onClick        | Note title appears, click is handled   | ✓     |
+| TC29    | FolderItem             | Renders folder and handles delete/click   | Name shown, delete and click work      | ✓     |
+| TC30    | PopupNote              | Handles form input and triggers create    | Note is submitted, onCreate is called  | ✓     |
 
-#### Summary (6.4 Frontend Unit)
-- Total Tests: 5  
-- Passed: ☐  
-- Failed: ☐  
-- Blocked: ☐
+#### Summary (Frontend Unit)
+- Total Tests: 3  
+- Passed: 3  
+- Failed: 0  
+- Blocked: 0
+
 ---
 
 ## 7. Installation Instructions
