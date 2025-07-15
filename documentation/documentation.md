@@ -348,10 +348,18 @@ cd backend
 - npm
 
 **Steps:**
-1. `cd frontend/`
-2. `npm install`
-3. `npm run dev`
-
+1. Change to frontend directory:
+```bash
+cd frontend/
+```
+2. Install packages:
+```bash 
+ npm install
+```
+3. Run the frontend:
+```bash
+npm run dev
+```
 ---
 
 ## 8. Support Log
