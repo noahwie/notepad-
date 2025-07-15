@@ -7,7 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+/**
+ * REST controller for managing folders.
+ * Provides endpoints for listing, creating, retrieving, and deleting folders.
+ */
 @RestController
 @RequestMapping("/folders")
 public class FolderController {
@@ -18,21 +21,43 @@ private final FolderService folderService;
         this.folderService = folderService;
     }
 
+    /**
+     * GET /folders
+     * Returns a list of all folders.
+     * @return list of FolderDto
+     */
     @GetMapping
     public List<FolderDto> getAllFolders() {
         return folderService.getAllFolders();
     }
 
+    /**
+     * GET /folders/{id}
+     * Returns a single folder by its ID.
+     * @param id the folder ID
+     * @return FolderDto
+     */
     @GetMapping("/{id}")
     public FolderDto getFolderById(@PathVariable long id) {
         return folderService.getFolderById(id);
     }
 
+    /**
+     * POST /folders
+     * Creates a new folder based on the given data.
+     * @param folderDto folder input (name)
+     * @return the created folder
+     */
     @PostMapping
     public FolderDto createFolder(@RequestBody @Valid FolderDto folderDto) {
         return folderService.createFolder(folderDto);
     }
 
+    /**
+     * DELETE /folders/{id}
+     * Deletes a folder by ID, including all contained notes.
+     * @param id ID of the folder to delete
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteFolderById(@PathVariable long id) {

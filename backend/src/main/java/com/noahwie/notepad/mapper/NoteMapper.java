@@ -4,11 +4,24 @@ import com.noahwie.notepad.dto.NoteDto;
 import com.noahwie.notepad.model.Note;
 import org.mapstruct.Mapper;
 
-
+/**
+ * MapStruct mapper interface for converting between Note entities and NoteDto objects.
+ * Simplifies transformation between database models and REST API data structures.
+ */
 @Mapper(componentModel = "spring")
 public interface NoteMapper {
 
-
+    /**
+     * Converts a Note entity into a NoteDto.
+     * @param note the Note entity
+     * @return corresponding NoteDto
+     */
     NoteDto toDto(Note note);
+
+    /**
+     * Converts a NoteDto into a Note entity.
+     * @param dto the NoteDto
+     * @return corresponding Note entity
+     */
     Note toEntity(NoteDto dto);
 }

@@ -12,7 +12,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+/**
+ * Service class responsible for handling note-related logic.
+ * Supports creating, updating, retrieving and deleting notes within folders.
+ */
 @Service
 public class NoteService {
     private final NoteRepository noteRepository;
@@ -25,7 +28,11 @@ public class NoteService {
         this.folderRepository = folderRepository;
     }
 
-    // Get all Notes inside a folder
+    /**
+     * Retrieves all notes belonging to a given folder ID.
+     * @param folderId the ID of the folder
+     * @return list of notes as DTOs
+     */
     public List<NoteDto> getNotesInFolder(Long folderId) {
         return noteRepository.findByFolderId(folderId)
                 .stream()
@@ -33,7 +40,13 @@ public class NoteService {
                 .toList();
     }
 
-    // create a Note to folder
+    /**
+     * Creates a new note and links it to the specified folder.
+     * @param folderId the ID of the folder
+     * @param noteDto note data (title, content)
+     * @return the created note as DTO
+     * @throws ResponseStatusException if folder not found
+     */
     public NoteDto createNote(Long folderId, NoteDto noteDto) {
         Folder folder = folderRepository.findById(folderId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Folder not found"));
@@ -47,14 +60,25 @@ public class NoteService {
         return noteMapper.toDto(savedNote);
     }
 
-    // Get a note id
+    /**
+     * Retrieves a note by its ID.
+     * @param id the note ID
+     * @return note as DTO
+     * @throws RuntimeException if note not found
+     */
     public NoteDto getNoteById(long id) {
         return noteRepository.findById((long) id)
                 .map(noteMapper::toDto)
                 .orElseThrow(() -> new RuntimeException("Note not found"));
     }
 
-    // Edit Note
+    /**
+     * Updates the title and content of a note by ID.
+     * @param id the note ID
+     * @param noteDto updated note data
+     * @return updated note as DTO
+     * @throws ResponseStatusException if note not found
+     */
     public NoteDto updateNoteById(long id, NoteDto noteDto) {
         Note existing = noteRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found"));
@@ -66,7 +90,11 @@ public class NoteService {
         return noteMapper.toDto(updated);
     }
 
-    // Delete Note
+    /**
+     * Deletes a note by its ID.
+     * @param id the note ID
+     * @throws ResponseStatusException if note not found
+     */
     public void deleteNote(long id) {
         if(!noteRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Note not found");

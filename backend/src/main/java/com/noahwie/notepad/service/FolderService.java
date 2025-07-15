@@ -10,7 +10,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+/**
+ * Service class responsible for folder-related business logic.
+ * Handles retrieval, creation and deletion of folders.
+ */
 @Service
 public class FolderService {
     private final FolderRepository folderRepository;
@@ -21,7 +24,10 @@ public class FolderService {
         this.folderMapper = folderMapper;
     }
 
-    // Get all Folders
+    /**
+     * Retrieves all folders from the database and maps them to DTOs.
+     * @return list of all folders as FolderDto
+     */
     public List<FolderDto> getAllFolders() {
         return folderRepository.findAll()
                 .stream()
@@ -29,14 +35,23 @@ public class FolderService {
                 .toList();
     }
 
-    // Get folder by id
+    /**
+     * Retrieves a specific folder by ID.
+     * @param id folder ID
+     * @return the folder as FolderDto
+     * @throws RuntimeException if folder not found
+     */
     public FolderDto getFolderById(long id) {
         return folderRepository.findById((long) id)
                 .map(folderMapper::toDto)
                 .orElseThrow(() -> new RuntimeException("Folder not found"));
     }
 
-    // Create new folder
+    /**
+     * Creates a new folder from the given FolderDto.
+     * @param folderDto DTO containing name
+     * @return the saved FolderDto
+     */
     public FolderDto createFolder(FolderDto folderDto) {
         Folder folder = folderMapper.toEntity(folderDto);
         folder.setCreatedAt(LocalDateTime.now());
@@ -44,7 +59,11 @@ public class FolderService {
         return folderMapper.toDto(savedFolder);
     }
 
-    // Delete folder by id
+    /**
+     * Deletes a folder by ID, including all its notes.
+     * @param id folder ID to delete
+     * @throws ResponseStatusException if folder not found
+     */
     public void deleteFolderById(long id) {
         if (!folderRepository.existsById(id)) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Folder not found");
