@@ -259,28 +259,39 @@ Each folder acts as a container for multiple notes, and all CRUD operations are 
 ---
 ### 6.2 Backend Unit Tests (JUnit)
 
-| Test ID | Class/Method                | Description                      | Expected Result             | Status |
-|---------|-----------------------------|----------------------------------|-----------------------------|--------|
-| TC11    | FolderServiceTest           | Save valid folder                | Folder is saved             | ☐      |
+| Test ID | Class / Method               | Description                                    | Expected Result                     | Status |
+|---------|------------------------------|------------------------------------------------|-------------------------------------|--------|
+| TC11    | FolderService.getAllFolders | Returns a list of mapped FolderDto objects     | List size matches mock repository   | ✓     |
+| TC12    | FolderService.getFolderById | Returns single FolderDto                       | DTO with matching ID is returned    | ✓     |
+| TC13    | FolderService.createFolder  | Maps DTO to entity, saves, and returns DTO     | Created folder DTO returned         | ✓     |
+| TC14    | FolderService.deleteFolderById | Deletes folder if it exists                   | Repository delete method is called  | ✓     |
+| TC15    | NoteService.getNotesInFolder | Returns list of notes for a given folder ID   | List of NoteDto returned            | ✓     |
+| TC16    | NoteService.getNoteById     | Retrieves single note by ID                    | Matching NoteDto returned           | ✓     |
+| TC17    | NoteService.createNote      | Creates a new Note under an existing folder    | Saved NoteDto is returned           | ✓     |
+| TC18    | NoteService.updateNoteById  | Updates existing note content/title            | Changes saved and returned          | ✓     |
+| TC19    | NoteService.deleteNote      | Deletes note if it exists                      | Repository delete called            | ✓     |
+| TC20    | NoteService.deleteNote (fail) | Throws if note does not exist                 | Exception is thrown                 | ✓     |
 
-#### Summary (6.2 Backend Unit)
-- Total Tests: 5  
-- Passed: ☐  
-- Failed: ☐  
-- Blocked: ☐
+#### Summary
+
+- Total Tests: 10  
+- Passed: 10  
+- Failed: 0  
+- Blocked: 0
+
 ---
 
 ### 6.3 Manual Frontend Testing
 
 | Test ID | Feature         | Description                                                              | Expected Result                                           | Status |
 |---------|------------------|---------------------------------------------------------------------------|------------------------------------------------------------|--------|
-| TC01    | Create Folder     | Clicking "New Folder" opens a form; after confirming, folder appears     | New folder is shown in the sidebar                         | ✓      |
-| TC02    | Select Folder     | Clicking on a folder in the sidebar                                      | Notes in that folder are shown; "New Note" button visible  | ✓      |
-| TC03    | Create Note       | Clicking "New Note" opens a form; after confirming, note is created      | New note appears in the main area                          | ✓      |
-| TC04    | Read Note         | Clicking on a note                                                       | Note content is displayed                                  | ✓      |
-| TC05    | Update Note       | Clicking "Edit Note" allows editing; after confirming, note is updated   | Updated content is saved and displayed                     | ✓      |
-| TC06    | Delete Note       | Clicking on a note → "Delete" → confirm                                  | Note is deleted and removed from the main screen           | ✓      |
-| TC07    | Delete Folder     | Clicking the X button next to a folder and confirming deletion           | Folder is removed from sidebar and all related notes are deleted | ✓   |
+| TC21    | Create Folder     | Clicking "New Folder" opens a form; after confirming, folder appears     | New folder is shown in the sidebar                         | ✓      |
+| TC22    | Select Folder     | Clicking on a folder in the sidebar                                      | Notes in that folder are shown; "New Note" button visible  | ✓      |
+| TC23    | Create Note       | Clicking "New Note" opens a form; after confirming, note is created      | New note appears in the main area                          | ✓      |
+| TC24    | Read Note         | Clicking on a note                                                       | Note content is displayed                                  | ✓      |
+| TC25    | Update Note       | Clicking "Edit Note" allows editing; after confirming, note is updated   | Updated content is saved and displayed                     | ✓      |
+| TC26    | Delete Note       | Clicking on a note → "Delete" → confirm                                  | Note is deleted and removed from the main screen           | ✓      |
+| TC27    | Delete Folder     | Clicking the X button next to a folder and confirming deletion           | Folder is removed from sidebar and all related notes are deleted | ✓   |
 
 #### Summary
 
