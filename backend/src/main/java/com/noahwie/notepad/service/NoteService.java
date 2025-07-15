@@ -47,7 +47,7 @@ public class NoteService {
         return noteMapper.toDto(savedNote);
     }
 
-    // Get a note Id
+    // Get a note id
     public NoteDto getNoteById(long id) {
         return noteRepository.findById((long) id)
                 .map(noteMapper::toDto)

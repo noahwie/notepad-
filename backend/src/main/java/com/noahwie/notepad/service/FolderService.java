@@ -29,7 +29,7 @@ public class FolderService {
                 .toList();
     }
 
-    // Get folder by Id
+    // Get folder by id
     public FolderDto getFolderById(long id) {
         return folderRepository.findById((long) id)
                 .map(folderMapper::toDto)
